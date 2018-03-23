@@ -1,6 +1,7 @@
 #!/bin/sh
 
-echo "$SSH_PRIVATE_KEY" > /tmp/ansible.pem && chmod 600 /tmp/ansible.pem
+echo "$PLUGIN_SSH_PRIVATE_KEY"
+echo "$PLUGIN_SSH_PRIVATE_KEY" > /tmp/ansible.pem && chmod 600 /tmp/ansible.pem
 
 # Set inventory according to plugin, else default to /etc/ansible/hosts
 if [ "${PLUGIN_INVENTORY}" ];

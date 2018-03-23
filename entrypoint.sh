@@ -1,7 +1,6 @@
 #!/bin/sh
 
-echo "$PLUGIN_SSH_PRIVATE_KEY"
-echo "$PLUGIN_SSH_PRIVATE_KEY" > /tmp/ansible.pem && chmod 600 /tmp/ansible.pem
+echo "${PLUGIN_PRIVATE_KEY:-${ANSIBLE_PRIVATE_KEY}}" > /tmp/ansible.pem && chmod 600 /tmp/ansible.pem
 
 # Set inventory according to plugin, else default to /etc/ansible/hosts
 if [ "${PLUGIN_INVENTORY}" ];
@@ -32,6 +31,6 @@ ansible-playbook ${PLUGIN_PLAYBOOK} \
     --private-key /tmp/ansible.pem \
     -i $inventory \
     -t $tags \
-    -e '__drone_commit_tag=${DRONE_TAG}' \
-    -e '__drone_commit_sha=${DRONE_COMMIT_SHA}'
+    -e "__drone_commit_tag=${DRONE_TAG}" \
+    -e "__drone_commit_sha=${DRONE_COMMIT_SHA}"
 

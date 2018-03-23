@@ -3,12 +3,16 @@
 Use the Drone plugin to provision with ansible.
 The following parameters are used to configure this plugin:
 
+*Mandatory:*
 * `inventory` - Define the inventory file (mandatory)
 * `playbook` - Define the playbook file (mandatory)
-* `ssh_private_key` - Define the ssh-key to use for connecting to hosts
 ---
+*Optional:*
 * `tags` - Define a comma separated list of tags to execute (optional)
 * `galaxy_requirements` - Define the path to the `requirements.yml` file in order to install Ansible Galaxy requirements before running the playbook (optional)
+---
+*Secrets:*:
+* `ansible_private_key` - Define the ssh-key to use for connecting to hosts
 
 The following is a sample configuration in your .drone.yml file:
 
@@ -18,7 +22,7 @@ pipeline:
     image: Lowess/drone-ansible
     inventory: path/to/inventory
     playbook: web.yml
-    secrets: [ plugin_ssh_private_key ]
+    secrets: [ ansible_private_key ]
 ```
 
 ```yaml
@@ -28,7 +32,7 @@ pipeline:
     inventory: path/to/inventory
     playbook: web.yml
     galaxy_requirements: path/to/requirements.yml
-    secrets: [ plugin_ssh_private_key ]
+    secrets: [ ansible_private_key ]
 ```
 To add the ssh key use drone secrets via the cli
 

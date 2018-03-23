@@ -21,6 +21,15 @@ pipeline:
     secrets: [ ssh_private_key ]
 ```
 
+```yaml
+pipeline:
+  deploy:
+    image: Lowess/drone-ansible
+    inventory: path/to/inventory
+    playbook: web.yml
+    galaxy_requirements: path/to/requirements.yml
+    secrets: [ ssh_private_key ]
+```
 To add the ssh key use drone secrets via the cli
 
 ```

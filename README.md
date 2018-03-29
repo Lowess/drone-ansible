@@ -19,7 +19,7 @@ The following is a sample configuration in your .drone.yml file:
 ```yaml
 pipeline:
   deploy:
-    image: Lowess/drone-ansible
+    image: lowess/drone-ansible
     inventory: path/to/inventory
     playbook: web.yml
     secrets: [ ansible_private_key ]
@@ -28,7 +28,7 @@ pipeline:
 ```yaml
 pipeline:
   deploy:
-    image: Lowess/drone-ansible
+    image: lowess/drone-ansible
     inventory: path/to/inventory
     playbook: web.yml
     galaxy_requirements: path/to/requirements.yml
@@ -39,7 +39,7 @@ To add the ssh key use drone secrets via the cli
 ```
 drone secret add \
   -repository user/repo \
-  -image Lowess/drone-ansible \
+  -image lowess/drone-ansible \
   -name ssh_private_key \
   -value @path/to/.ssh/id_rsa
 ```
@@ -57,7 +57,7 @@ __drone_commit_sha -> DRONE_COMMIT_SHA
 Build the docker image with the following commands:
 
 ```
-docker build --rm -t Lowess/drone-ansible .
+docker build --rm -t lowess/drone-ansible .
 ```
 
 ## Local usage

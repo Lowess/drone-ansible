@@ -5,7 +5,7 @@ FROM alpine:latest
 
 MAINTAINER Florian Dambrine <android.florian@gmail.com>
 
-ARG ANSIBLE_VERSION=2.4.3.0
+ARG ANSIBLE_VERSION=2.8.5
 
 RUN apk --update add sudo \
     && apk --update add python py-pip openssl ca-certificates \

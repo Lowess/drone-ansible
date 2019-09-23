@@ -13,6 +13,7 @@ RUN apk --update add sudo \
         python-dev libffi-dev openssl-dev build-base \
     && pip install --upgrade pip cffi \
     && pip install ansible==${ANSIBLE_VERSION} \
+    && pip install  boto \
     && apk del build-dependencies \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /etc/ansible \
